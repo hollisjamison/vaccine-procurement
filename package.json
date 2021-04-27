@@ -1,0 +1,26 @@
+{
+  "name": "vaccine-procurement",
+  "version": "1.0.0",
+  "description": "You have been tasked to assist a set of clinics manage their inventory of COVID-19 vaccines. Some clinics are in areas where there is a shortage of vaccines and some have surpluses.",
+  "main": "index.js",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^7.25.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.3.2"
+  },
+  "scripts": {
+    "test": "mocha tests/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hollisjamison/vaccine-procurement.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hollisjamison/vaccine-procurement/issues"
+  },
+  "homepage": "https://github.com/hollisjamison/vaccine-procurement#readme"
+}

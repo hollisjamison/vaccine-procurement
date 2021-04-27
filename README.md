@@ -14,9 +14,9 @@ Make a function that accepts one requirement of vaccines (either a surplus or a 
 ```
 {
   brand: "Pfizer"
-  type: "Surplus"
-  units: 100
-  clinicId: 291
+  type: "surplus",
+  units: 100,
+  clinicId: 291,
 }
 ```
 ### Active Requirement List
@@ -30,8 +30,8 @@ Make a function that accepts one requirement of vaccines (either a surplus or a 
 [
   {
     brand: "Pfizer"
-    type: "surplus"
-    units: 100
+    type: "surplus",
+    units: 100,
     clinicId: 291
   }
 ]
@@ -42,9 +42,9 @@ You would expect that with no active requirements the new requirement would simp
 ### Incoming Requirement
 ```
 {
-  brand: "Moderna"
-  type: "shortage"
-  units: 150
+  brand: "Moderna",
+  type: "shortage",
+  units: 150,
   clinicId: 189
 }
 ```
@@ -52,15 +52,15 @@ You would expect that with no active requirements the new requirement would simp
 ```
 [
   {
-    brand: "J&J"
-    type: "surplus"
-    units: 125
+    brand: "J&J",
+    type: "surplus",
+    units: 125,
     clinicId: 265
   },
     {
-    brand: "Moderna"
-    type: "surplus"
-    units: 150
+    brand: "Moderna",
+    type: "surplus",
+    units: 150,
     clinicId: 288
   }
 ]
@@ -69,9 +69,9 @@ You would expect that with no active requirements the new requirement would simp
 ```
 [
   {
-    brand: "J&J"
-    type: "surplus"
-    units: 125
+    brand: "J&J",
+    type: "surplus",
+    units: 125,
     clinicId: 265
   }
 ]
