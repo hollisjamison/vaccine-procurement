@@ -7,7 +7,7 @@ Make a function that accepts one requirement of vaccines (either a surplus or a 
 - You must match a surplus with a shortage or vice versa.
 - Requirements that were not fulfilled completely should be entered back into the list so they can be fulfilled later.
 - Vaccine types much match (As in Moderna to Moderna, but you cannot fulfill a Pfizer request with a Moderna surplus)
-- Requirements should be stored and fullfiled in an oldest to newest format. As requirements are partially fulfilled they should be moved to the front and are now deemed as new.
+- Requirements should be stored and fulfilled in an oldest to newest format. As requirements are partially fulfilled they should be moved to the front and are now deemed as new.
 
 ## Example 1
 ### Incoming Requirement
