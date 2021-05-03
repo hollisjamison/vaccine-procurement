@@ -7,8 +7,10 @@ const procureVaccines = (activeReqs, newReq) => {
     return procuredArray
   }
 
-  activeReqs.forEach((activeReq, i) => {
-    if (newReq.units !== 0 && reqTypeMatch(newReq, activeReq) && reqBrandMatch(newReq, activeReq)) {
+  for (let i = 0; i < activeReqs.length; i++) {
+    const activeReq = activeReqs[i]
+
+    if (reqTypeMatch(newReq, activeReq) && reqBrandMatch(newReq, activeReq)) {
       const procurementQty = getProcurementQty(newReq, activeReq)
 
       activeReq.units -= procurementQty
@@ -19,8 +21,9 @@ const procureVaccines = (activeReqs, newReq) => {
       }
 
       activeReqs.splice(i, 1)
+      i--
     }
-  })
+  }
 
   let returnArray = activeReqs.concat(procuredArray)
 
@@ -36,21 +39,15 @@ const reqTypeMatch = (newReq, activeReq) => {
 }
 
 const reqBrandMatch = (newReq, activeReq) => {
-  return newReq.brand === activeReq.brand
+  if (newReq.brand === activeReq.brand) {
+    return true
+  } else {
+    return false
+  }
 }
 
 const getProcurementQty = (newReq, activeReq) => {
-  let surplusQty = 0
-
-  if (newReq.type === 'surplus') {
-    surplusQty = newReq.units
-  }
-
-  if (activeReq.type === 'surplus') {
-    surplusQty = activeReq.units
-  }
-
-  let procurementQty = Math.min(surplusQty, newReq.units, activeReq.units)
+  let procurementQty = Math.min(newReq.units, activeReq.units)
 
   return procurementQty
 }
