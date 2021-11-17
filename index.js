@@ -1,5 +1,9 @@
-const procureVaccines = (activeReqs, newReq) => {
+const procureVaccines = (array, object) => {
+  let activeReqs = [...array]
+  let newReq = { ...object }
+  
   let procuredArray = []
+  let nonProcuredArray = []
 
   if (activeReqs.length === 0) {
     procuredArray.push(newReq)
@@ -11,27 +15,32 @@ const procureVaccines = (activeReqs, newReq) => {
     const activeReq = activeReqs[i]
 
     if (reqTypeMatch(newReq, activeReq) && reqBrandMatch(newReq, activeReq)) {
-      const procurementQty = getProcurementQty(newReq, activeReq)
+      const procuredReq = fulfillProcurement(newReq, activeReq)
 
-      activeReq.units -= procurementQty
-      newReq.units -= procurementQty
-
-      if (activeReq.units > 0) {
-        procuredArray.push(activeReq)
+      if (procuredReq.units > 0) {
+        procuredArray.push(procuredReq)
       }
-
-      activeReqs.splice(i, 1)
-      i--
+    } else {
+      nonProcuredArray.push(activeReq)
     }
   }
 
-  let returnArray = activeReqs.concat(procuredArray)
-
   if (newReq.units > 0) {
-    returnArray.push(newReq)
+    procuredArray.push(newReq)
   }
 
+  let returnArray = [...nonProcuredArray, ...procuredArray]
+
   return returnArray
+}
+
+const fulfillProcurement = (newReq, activeReq) => {
+  const procurementQty = getProcurementQty(newReq, activeReq)
+
+  activeReq.units -= procurementQty
+  newReq.units -= procurementQty
+
+  return activeReq
 }
 
 const reqTypeMatch = (newReq, activeReq) => {
