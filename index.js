@@ -2,8 +2,8 @@ const v8 = require('v8')
 
 const procureVaccines = (array, object) => {
   // Requires node17!
-  // If on node14 use the below:
-  //
+  // If on node14 or below use the following:
+  // const v8 = require('v8')
   // const structuredClone = (o) => v8.deserialize(v8.serialize(o));
   let activeReqs = structuredClone(array)
   let newReq = structuredClone(object)
@@ -49,23 +49,11 @@ const fulfillProcurement = (newReq, activeReq) => {
   return activeReq
 }
 
-const reqTypeMatch = (newReq, activeReq) => {
-  return newReq.type !== activeReq.type
-}
+const reqTypeMatch = (newReq, activeReq) => newReq.type !== activeReq.type
 
-const reqBrandMatch = (newReq, activeReq) => {
-  if (newReq.brand === activeReq.brand) {
-    return true
-  } else {
-    return false
-  }
-}
+const reqBrandMatch = (newReq, activeReq) => newReq.brand === activeReq.brand
 
-const getProcurementQty = (newReq, activeReq) => {
-  let procurementQty = Math.min(newReq.units, activeReq.units)
-
-  return procurementQty
-}
+const getProcurementQty = (newReq, activeReq) => Math.min(newReq.units, activeReq.units)
 
 const structuredClone = (o) => v8.deserialize(v8.serialize(o))
 
