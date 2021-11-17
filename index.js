@@ -1,7 +1,13 @@
+const v8 = require('v8')
+
 const procureVaccines = (array, object) => {
-  let activeReqs = [...array]
-  let newReq = { ...object }
-  
+  // Requires node17!
+  // If on node14 use the below:
+  //
+  // const structuredClone = (o) => v8.deserialize(v8.serialize(o));
+  let activeReqs = structuredClone(array)
+  let newReq = structuredClone(object)
+
   let procuredArray = []
   let nonProcuredArray = []
 
@@ -60,5 +66,7 @@ const getProcurementQty = (newReq, activeReq) => {
 
   return procurementQty
 }
+
+const structuredClone = (o) => v8.deserialize(v8.serialize(o))
 
 module.exports = procureVaccines
